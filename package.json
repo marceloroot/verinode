@@ -1,0 +1,31 @@
+{
+  "name": "ws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "debug": "^4.3.1",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "i": "^0.3.6",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "moment": "^2.29.1",
+    "mysql2": "^2.2.5",
+    "npm": "^7.13.0",
+    "sequelize": "^6.6.2",
+    "sequelize-auto": "^0.8.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.3.0"
+  }
+}
