@@ -17,9 +17,11 @@ const indexRoute =require('./routes/index-route');
 
 const usuarioRoute =require('./routes/usuario-routes');
 const permissaoRoute =require('./routes/permissao-routes');
+const rotaRoute =require('./routes/rota-routes');
 
 //Parcelamentos
 const parcelamento_pgfn =require('./routes/Parcelamentos/parcelamento_pgfn-routes');
+const dctf_web =require('./routes/Parcelamentos/dctf_web-routes');
 
 
 app.use(bodyParser.json());
@@ -31,6 +33,8 @@ app.use(cors());
 
 app.use('/usuario',usuarioRoute);
 app.use('/permissao',permissaoRoute);
+app.use('/rota',rotaRoute);
 app.use('/parcelamentos/parcelamento_pgfn',parcelamento_pgfn);
+app.use('/parcelamentos/dctf_web',dctf_web);
 module.exports =app;
 

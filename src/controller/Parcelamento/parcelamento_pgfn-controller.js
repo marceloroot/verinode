@@ -45,17 +45,69 @@ async index(req,res){
           //array finalization
           var dadosfinal = Array();
           
-          var cont =0;
-        const temp = await dtb_empresas.findAll();
+          //var cont =0;
+       // const temp = await dtb_empresas.findAll();
           
-         const pgfn = await dtb_parcelamento_pgfn.findAll(
+         const pgfns = await dtb_parcelamento_pgfn.findAll(
             {include:[{association:"parcelas"},{association:"negocio"},{association:"empresa"}]},
          );
          
 
          //pgfn.push.apply(paracelas, novoParcelasId);
          return res.status(201).send({
-            pgfn
+            pgfns
+         },
+         
+         )
+    }
+    catch(err){
+        res.status(200).send({
+            error:err.message
+        })
+    }
+},
+async buscarid(req,res){
+    try{
+        const { id } = req.params;
+        const token = req.body.token || req.query.token || req.headers['x-access-token'];
+        const data = await authService.decodeToken(token);
+        const connection = new Sequelize(data.banco, process.env.DB_USER, process.env.DB_PASS, {
+            dialect: 'mysql',
+            host:process.env.DB_HOST,
+            define:{
+                timestamps:false,
+                underscored:true,
+                freezeTableName: true,
+                
+            },
+          });
+
+      
+          dtb_parcelamento_pgfn.init(connection);
+          dtb_parcelamento_pgfn_parcelas.init(connection);
+          dtb_parcelamento_pgfn_dados_negociacao.init(connection);
+          dtb_empresas.init(connection);
+
+          //associate
+          dtb_parcelamento_pgfn.associate(connection.models);
+          dtb_parcelamento_pgfn_parcelas.associate(connection.models);
+          dtb_parcelamento_pgfn_dados_negociacao.associate(connection.models);
+          dtb_empresas.associate(connection.models);
+
+          //array finalization
+          var dadosfinal = Array();
+          
+          //var cont =0;
+       // const temp = await dtb_empresas.findAll();
+          
+         const pgfns = await dtb_parcelamento_pgfn.findAll(
+            {where:{id},include:[{association:"parcelas"},{association:"negocio"},{association:"empresa"}]},
+         );
+         
+
+         //pgfn.push.apply(paracelas, novoParcelasId);
+         return res.status(201).send({
+            pgfns
          },
          
          )

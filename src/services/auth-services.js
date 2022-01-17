@@ -41,7 +41,6 @@ exports.isAdmin = function (req, res, next) {
         });
     } else {
         jwt.verify(token, process.env.APP_SECRET_KEY, function (error, decoded) {
-            console.log(decoded);
             if (error) {
                 res.status(401).json({
                     message: 'Token Inválido'

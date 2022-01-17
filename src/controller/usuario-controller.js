@@ -143,13 +143,12 @@ async autenticar(req,res){
                 
             
             });
-
-      
-    
+   
               if(!user){
                 res.status(400).send({
                     error:'Email ou senha errada'
                 });
+                return;
                }
               
            const token = await authService.generateToken({

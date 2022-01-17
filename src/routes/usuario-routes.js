@@ -6,12 +6,12 @@ const authService = require('../services/auth-services');
 const controller = require('../controller/usuario-controller');
 
 router.get('/decoude/',authService.authorize,controller.decoude);
-router.post('/',controller.store);
-router.put('/:id',authService.authorize,controller.update);
+router.post('/',authService.isAdmin,controller.store);
+router.put('/:id',authService.isAdmin,controller.update);
 router.post('/authenticate/',controller.autenticar);
-router.get('/:id',authService.authorize,controller.show);
-router.get('/usuariocompermissao/:id',authService.authorize,controller.showPermissao);
-router.get('/',controller.index);
-router.put('/mudastatus/:id',authService.authorize,controller.mudastatus);
+router.get('/:id',authService.isAdmin,controller.show);
+router.get('/usuariocompermissao/:id',authService.isAdmin,controller.showPermissao);
+router.get('/',authService.isAdmin,controller.index);
+router.put('/mudastatus/:id',authService.isAdmin,controller.mudastatus);
 
 module.exports =router;

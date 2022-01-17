@@ -20,8 +20,8 @@ class Usuario extends Model {
 
 
   static associate(models){
-     this.belongsToMany(models.Permissoe, { foreignKey: 'usuario_id', through: 'usuarios_permissoes', as: 'permissoes' });
-  
+     this.belongsToMany(models.Permissoe, { foreignKey: 'usuario_id', through: 'usuarios_permissoes', as: 'permissoes' })
+     this.hasMany(models.Rotas,{ foreignKey: 'usuario_id', as:'rotas' });
     }
  
 
