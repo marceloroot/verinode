@@ -1,7 +1,7 @@
 'use strict'
 require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser'); 
+const bodyParser = require('body-parser');
 
 require('./database');///importante erro de lenght
 require('./databaseveri');///importante erro de lenght
@@ -12,14 +12,17 @@ const router = express.Router();
 
 
 //Carrega rota
-const indexRoute =require('./routes/index-route');
+const indexRoute = require('./routes/index-route');
 
 
-const usuarioRoute =require('./routes/usuario-routes');
-const permissaoRoute =require('./routes/permissao-routes');
+const usuarioRoute = require('./routes/usuario-routes');
+const permissaoRoute = require('./routes/permissao-routes');
 
 //Parcelamentos
-const parcelamento_pgfn =require('./routes/Parcelamentos/parcelamento_pgfn-routes');
+const parcelamento_pgfn = require('./routes/Parcelamentos/parcelamento_pgfn-routes');
+
+//E_social
+const dctf_web = require('./routes/e_social/dctf_web-routes');
 
 
 app.use(bodyParser.json());
@@ -29,8 +32,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 
-app.use('/usuario',usuarioRoute);
-app.use('/permissao',permissaoRoute);
-app.use('/parcelamentos/parcelamento_pgfn',parcelamento_pgfn);
-module.exports =app;
+app.use('/usuario', usuarioRoute);
+app.use('/permissao', permissaoRoute);
+app.use('/parcelamentos/parcelamento_pgfn', parcelamento_pgfn);
+app.use('/e_social/dctf_web', dctf_web);
+module.exports = app;
 

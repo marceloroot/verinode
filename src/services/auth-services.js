@@ -91,3 +91,33 @@ exports.isParcelamento = function (req, res, next) {
         });
     }
 };
+
+exports.isE_social = function (req, res, next) {
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    console.log(token);
+    if (!token) {
+        res.status(401).json({
+            message: 'Acesso Restrito'
+        });
+    } else {
+        jwt.verify(token, process.env.APP_SECRET_KEY, function (error, decoded) {
+            console.log(decoded);
+            if (error) {
+                res.status(401).json({
+                    message: 'Token Inválido'
+                });
+            } else {
+                const result = decoded.permissoes.find(atv=>atv.nome == "E_social" || atv.nome == "E_social"  );
+               
+                if (result) {
+                    next();
+                } else {
+                    res.status(200).json({
+                        auth:true,
+                        message: 'Você não tem Acesso ao Modulo E_social'
+                    });
+                }
+            }
+        });
+    }
+};
