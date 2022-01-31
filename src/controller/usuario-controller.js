@@ -137,7 +137,7 @@ async autenticar(req,res){
             const user = await Usuario.findOne({
                 where:{
                     email:req.body.email,
-                    senha:md5(req.body.password + process.env.APP_SECRET_KEY)
+                    senha:md5(req.body.senha + process.env.APP_SECRET_KEY)
                 },
                 include:{association:"permissoes"},
                 
