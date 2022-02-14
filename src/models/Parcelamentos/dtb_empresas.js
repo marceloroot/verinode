@@ -68,7 +68,8 @@ class dtb_empresas extends Model {
   };
   
   static associate(models){
-    this.hasMany(models.dtb_parcelamento_pgfn,{ foreignKey: 'cnpj', as:'pgfns' })
+   
+   
    }
 
 }

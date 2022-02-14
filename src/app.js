@@ -20,6 +20,7 @@ const permissaoRoute = require('./routes/permissao-routes');
 const rotaRoute =require('./routes/rota-routes');
 //Parcelamentos
 const parcelamento_pgfn = require('./routes/Parcelamentos/parcelamento_pgfn-routes');
+const sitacao_fiscal = require('./routes/Consulta_fiscal/Sitacao_fiscal-routes');
 
 //E_social
 const dctf_web = require('./routes/e_social/dctf_web-routes');
@@ -37,5 +38,6 @@ app.use('/permissao', permissaoRoute);
 app.use('/rota',rotaRoute);
 app.use('/parcelamentos/parcelamento_pgfn', parcelamento_pgfn);
 app.use('/e_social/dctf_web', dctf_web);
+app.use('/sitacao_fiscal', sitacao_fiscal);
 module.exports = app;
 
