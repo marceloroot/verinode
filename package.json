@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "start": "pm2 start ecosystem.config.js -i max --wait-ready --only databyte-backend-contrato",
+    "stop": "pm2 stop databyte-backend-contrato",
+    "reload": "pm2 reload databyte-backend-contrato",
+    "dev": "nodemon ./src/index.js",
+    "test": "node ./src/tests/test.js",
+    "pkg": "npx pkg -t node8-win ./bin/www"
+    
   },
   "author": "",
   "license": "ISC",

@@ -16,7 +16,10 @@ class dtb_parcelamento_mei_demonstrativo_pagamento extends Model {
     });
   };
   
-
+  static associate(models){
+    this.belongsTo(models.dtb_parcelamento_mei_pedido_contribuinte,{ foreignKey: 'cnpj', targetKey: 'cnpj', as:'contribuinte' })
+   
+}
 }
 
 module.exports = dtb_parcelamento_mei_demonstrativo_pagamento;

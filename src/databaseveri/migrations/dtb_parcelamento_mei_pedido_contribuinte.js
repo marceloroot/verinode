@@ -22,23 +22,31 @@ module.exports = {
                 allowNull: true,
             },
             situacao: {
-                type: Sequelize.STRING(20),
+                type: Sequelize.STRING(30),
                 allowNull: true,
             },
             data_situacao: {
-                type: Sequelize.STRING(20),
+                type: Sequelize.STRING(30),
+                allowNull: true,
+            },
+            valor_total_consolidado: {
+                type: Sequelize.STRING(30),
                 allowNull: true,
             },
             qtd_parcelas: {
-                type: Sequelize.STRING(20),
+                type: Sequelize.STRING(30),
                 allowNull: true,
             },
             parcela_basica: {
-                type: Sequelize.STRING(20),
+                type: Sequelize.STRING(30),
                 allowNull: true,
             },
             data_consolidacao: {
-                type: Sequelize.STRING(20),
+                type: Sequelize.STRING(30),
+                allowNull: true,
+            },
+            path_download_parcela: {
+                type: Sequelize.STRING(500),
                 allowNull: true,
             },
         
